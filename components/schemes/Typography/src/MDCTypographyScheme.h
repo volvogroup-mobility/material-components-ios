@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MaterialTypographyScheme+Scheming.h"
+#import "Scheming/MaterialTypographyScheme+Scheming.h"
 
 API_DEPRECATED_BEGIN("🤖👀 Use Typescale tokens instead (go/material-ios-tokens#typescale-tokens). "
                      "This has go/material-ios-migrations#scriptable-potential 🤖👀",

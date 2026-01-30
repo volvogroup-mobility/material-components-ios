@@ -15,7 +15,7 @@
 #import "MDCTypography.h"
 
 #import "private/UIFont+MaterialTypographyPrivate.h"
-#import <MDFTextAccessibility/MDFTextAccessibility.h>
+@import MDFTextAccessibility;
 
 static id<MDCTypographyFontLoading> gFontLoader = nil;
 

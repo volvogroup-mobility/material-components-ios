@@ -19,7 +19,7 @@
 #import "MDCButton.h"
 #import "MaterialShadowElevations.h"
 
-#import <MDFInternationalization/MDFInternationalization.h>
+@import MDFInternationalization;
 
 static const CGFloat MDCFloatingButtonDefaultDimension = 56;
 static const CGFloat MDCFloatingButtonMiniDimension = 40;

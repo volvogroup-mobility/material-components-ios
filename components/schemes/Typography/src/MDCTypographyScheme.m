@@ -14,7 +14,7 @@
 
 #import "MDCTypographyScheme.h"
 
-#import "MDCFontScaler.h"
+#import "FontScaler/MDCFontScaler.h"
 #import "UIFont+MaterialScalable.h"
 
 @implementation MDCTypographyScheme

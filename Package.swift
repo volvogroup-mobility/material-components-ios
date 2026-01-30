@@ -19,12 +19,6 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "AnimationTiming",
-            path: "components/AnimationTiming/src",
-            publicHeadersPath: ".",
-            cSettings: [.headerSearchPath("../../MinimumOS/src")]
-        ),
-        .target(
             name: "Availability",
             path: "components/Availability/src",
             publicHeadersPath: ".",
@@ -43,6 +37,10 @@ let package = Package(
                 "ShadowLayer",
                 "ShapeLibrary",
                 "Shapes",
+                "SchemesColor",
+                "SchemesContainer",
+                "SchemesShape",
+                "SchemesTypography",
                 "Typography",
                 "PrivateMath"
             ],
@@ -55,7 +53,7 @@ let package = Package(
                 "Theming",
                 "TypographyThemer"
             ],
-            publicHeadersPath: "include",
+            publicHeadersPath: ".",
             cSettings: [.headerSearchPath("include")]
         ),
         .target(
@@ -89,8 +87,10 @@ let package = Package(
             dependencies: [
                 "Shadow"
             ],
-            path: "components/M3CButton/src",
-            publicHeadersPath: "."
+            path: "components/M3CButton",
+            sources: ["src"],
+            publicHeadersPath: "src",
+            cSettings: [.headerSearchPath("private")]
         ),
         .target(
             name: "OverlayWindow",
@@ -108,13 +108,48 @@ let package = Package(
         .target(
             name: "Ripple",
             dependencies: [
-                "AnimationTiming",
                 "PrivateColor",
                 "PrivateMath"
             ],
             path: "components/Ripple/src",
             publicHeadersPath: ".",
-            cSettings: [.headerSearchPath("../../Availability/src")]
+            cSettings: [.headerSearchPath("../../Availability/src"), .headerSearchPath("private")]
+        ),
+        .target(
+            name: "SchemesColor",
+            dependencies: [
+                "PrivateColor"
+            ],
+            path: "components/schemes/Color/src",
+            publicHeadersPath: "."
+        ),
+        .target(
+            name: "SchemesContainer",
+            dependencies: [
+                "SchemesColor",
+                "SchemesShape",
+                "SchemesTypography"
+            ],
+            path: "components/schemes/Container/src",
+            publicHeadersPath: "."
+        ),
+        .target(
+            name: "SchemesShape",
+            dependencies: [
+                "Shapes",
+                "ShapeLibrary"
+            ],
+            path: "components/schemes/Shape/src",
+            publicHeadersPath: "."
+        ),
+        .target(
+            name: "SchemesTypography",
+            dependencies: [
+                "Typography"
+            ],
+            path: "components/schemes/Typography/src",
+            publicHeadersPath: ".",
+            cSettings: [.headerSearchPath("FontSCaler")]
         ),
         .target(
             name: "Shadow",
@@ -158,7 +193,6 @@ let package = Package(
             name: "Snackbar",
             dependencies: [
                 "Availability",
-                "AnimationTiming",
                 "Buttons",
                 "Elevation",
                 "M3CButton",
@@ -175,7 +209,6 @@ let package = Package(
         .target(
             name: "TextFields",
             dependencies: [
-                "AnimationTiming",
                 "Buttons",
                 "Elevation",
                 "Palettes",
@@ -184,8 +217,9 @@ let package = Package(
                 .product(name: "MDFInternationalization", package: "material-internationalization-ios")
             ],
             path: "components/TextFields/src",
-            exclude: ["Theming", "ColorThemer"],
-            cSettings: [.headerSearchPath("../../MinimumOS/src"), .headerSearchPath("include")]
+            exclude: ["ColorThemer"],
+            publicHeadersPath: ".",
+            cSettings: [.headerSearchPath("../../MinimumOS/src"), .headerSearchPath("private")]
         ),
         .target(
             name: "Typography",
@@ -195,7 +229,7 @@ let package = Package(
                 "PrivateMath"
             ],
             path: "components/Typography/src",
-            exclude: ["FontLoader", "FontScaler"],
+            exclude: ["FontScaler"],
             publicHeadersPath: ".",
             cSettings: [.headerSearchPath("private")]
         ),

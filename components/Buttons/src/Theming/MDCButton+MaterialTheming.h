@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <MaterialComponents/MaterialButtons.h>
+#import "MaterialButtons.h"
 #import "MaterialContainerScheme.h"
 
 API_DEPRECATED_BEGIN("🤖👀 Use branded M3CButton instead. "
